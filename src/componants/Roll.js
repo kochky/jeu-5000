@@ -1,0 +1,78 @@
+import React, { useState, useEffect } from 'react';
+
+function DiceValue(){
+        return Math.floor(Math.random() * 6) + 1;
+}
+
+function Roll({setGameOver,GameOver,setIsCurrentPlay,IsCurrentPlay,leastOneDice,setLeastOneDice,diceOne,diceTwo,diceThree,diceFour,diceFive,setDiceOne,setDiceTwo,setDiceThree,setDiceFour,setDiceFive}){
+   
+
+    useEffect(()=>{//Change la valeur des dés s'ils sont toujours en jeu
+        if( leastOneDice || IsCurrentPlay===true ){
+            if(diceOne.keep===false ){setDiceOne({...diceOne,value:DiceValue()})}
+            if(diceTwo.keep===false){ setDiceTwo({...diceTwo,value:DiceValue()})}
+            if(diceThree.keep===false){setDiceThree({...diceThree,value:DiceValue()})}
+            if(diceFour.keep===false){ setDiceFour({...diceFour,value:DiceValue()})}
+            if(diceFive.keep===false){setDiceFive({...diceFive,value:DiceValue()})}
+        }
+    },[leastOneDice,IsCurrentPlay])
+    
+    useEffect(()=>{//Si les 5 dés sont gardés alors ils sont de retour en jeu
+        if(diceOne.confirmed&& diceTwo.confirmed && diceThree.confirmed && diceFour.confirmed && diceFive.confirmed){
+            setDiceOne({...diceOne,keep:false,confirmed:false})
+            setDiceTwo({...diceTwo,keep:false,confirmed:false})
+            setDiceThree({...diceThree,keep:false,confirmed:false})
+            setDiceFour({...diceFour,keep:false,confirmed:false})
+            setDiceFive({...diceFive,keep:false,confirmed:false})
+        }  
+    })
+
+      useEffect(()=>{//Si aucun 1 ou 5 ne sortent, le tour est fini
+
+        if((diceOne.value===5 && diceOne.confirmed!==true) || (diceOne.value===1&& diceOne.confirmed!==true) ||(diceTwo.value===5&& diceOne.confirmed!==true) || (diceTwo.value===1&& diceOne.confirmed!==true) || (diceThree.value ===5 && diceOne.confirmed!==true)|| (diceThree.value===1&& diceOne.confirmed!==true)|| (diceFour.value ===5 && diceOne.confirmed!==true)|| (diceFour.value===1&& diceOne.confirmed!==true)|| (diceFive.value===5&& diceOne.confirmed!==true) || (diceFive.value===1&& diceOne.confirmed!==true)){
+            setGameOver(false)
+        }else{
+            setGameOver(true)
+        }
+          
+    },[GameOver])
+
+   function handleClick(){//Valide mes dés gardés de côté quand je relance les dés
+        setLeastOneDice(false)
+        setIsCurrentPlay(true)
+        setGameOver()
+
+
+        if (diceOne.keep===true && diceOne.confirmed===false){
+            setDiceOne({...diceOne,confirmed:true})
+             setLeastOneDice(true)
+            }
+
+        if (diceTwo.keep===true && diceTwo.confirmed===false){
+            setDiceTwo({...diceTwo,confirmed:true})
+            setLeastOneDice(true)
+            }
+
+        if (diceThree.keep===true && diceThree.confirmed===false){
+            setDiceThree({...diceThree,confirmed:true})
+            setLeastOneDice(true)
+
+            }
+        if (diceFour.keep===true && diceFour.confirmed===false){
+            setDiceFour({...diceFour,confirmed:true})
+            setLeastOneDice(true)
+            }
+        if (diceFive.keep===true && diceFive.confirmed===false){
+            setDiceFive({...diceFive,confirmed:true})
+            setLeastOneDice(true)
+            }  
+        
+    }
+
+
+    return(
+        <button onClick={handleClick} >Lancer les dés</button>
+    )
+}
+
+export default Roll
