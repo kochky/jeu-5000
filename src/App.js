@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.css';
 import Dice from './componants/Dice';
 import Roll from './componants/Roll';
