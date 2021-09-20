@@ -4,7 +4,7 @@ function DiceValue(){
         return Math.floor(Math.random() * 6) + 1;
 }
 
-function Roll({setGameOver,GameOver,setIsCurrentPlay,IsCurrentPlay,leastOneDice,setLeastOneDice,diceOne,diceTwo,diceThree,diceFour,diceFive,setDiceOne,setDiceTwo,setDiceThree,setDiceFour,setDiceFive}){
+function Roll({setGameOver,GameOver,setCombo,combo,setPoints,Points,setIsCurrentPlay,IsCurrentPlay,leastOneDice,setLeastOneDice,diceOne,diceTwo,diceThree,diceFour,diceFive,setDiceOne,setDiceTwo,setDiceThree,setDiceFour,setDiceFive}){
    
     const[step,setStep]=useState(0)
 
@@ -42,14 +42,47 @@ function Roll({setGameOver,GameOver,setIsCurrentPlay,IsCurrentPlay,leastOneDice,
             }else{
                 setGameOver(true)
             }
+            setStep(4)
+        }
+          
+    },[step])
+
+    useEffect(()=>{
+        if(step===4 && GameOver===false){
+           
+
+            if(combo.cinquante===1 ){
+                setPoints((prevState)=>({player1: prevState.player1 +50}))
+            }
+            if(combo.cinquante===2 ){
+                setPoints((prevState)=>({player1: prevState.player1 +100}))            }
+            if(combo.cinquante===3 ){
+                setPoints((prevState)=>({player1: prevState.player1 +500}))            }
+            if(combo.cinquante===4 ){
+                setPoints((prevState)=>({player1: prevState.player1 +550}))            }
+            if(combo.cinquante===5 ){
+                setPoints((prevState)=>({player1: prevState.player1 +600}))            }
+            if(combo.cent===1 ){
+                setPoints((prevState)=>({player1: prevState.player1 +100}))            }
+            if(combo.cent===2 ){
+                setPoints((prevState)=>({player1: prevState.player1 +200}))            }
+            if(combo.cent===3 ){
+                setPoints((prevState)=>({player1: prevState.player1 +1000}))            }
+            if(combo.cent===4 ){
+                setPoints((prevState)=>({player1: prevState.player1 +1100}))            }
+            if(combo.cent===5 ){
+                setPoints((prevState)=>({player1: prevState.player1 +1200}))            }
+
             setStep(0)
         }
+    
           
     },[step])
 
    function handleClick(){//Valide mes dés gardés de côté quand je relance les dés
   
-           if(step===0){
+           if(step===0 && GameOver===false){
+            setCombo({...setCombo,cinquante:0,cent:0})
             setLeastOneDice(false)
             setIsCurrentPlay(IsCurrentPlay+1)
             setGameOver()
@@ -58,25 +91,36 @@ function Roll({setGameOver,GameOver,setIsCurrentPlay,IsCurrentPlay,leastOneDice,
             if (diceOne.keep===true && diceOne.confirmed===false){
                 setDiceOne({...diceOne,confirmed:true})
                 setLeastOneDice(true)
+                if(diceOne.value===5){setCombo((prevState)=>({cinquante: prevState.cinquante +1}))}
+                if(diceOne.value===1){setCombo((prevState)=>({cent: prevState.cent +1}))}
                 }
-
+                
             if (diceTwo.keep===true && diceTwo.confirmed===false){
                 setDiceTwo({...diceTwo,confirmed:true})
                 setLeastOneDice(true)
+                if(diceTwo.value===5){setCombo((prevState)=>({cinquante: prevState.cinquante +1}))}
+                if(diceTwo.value===1){setCombo((prevState)=>({cent: prevState.cent +1}))}
                 }
 
             if (diceThree.keep===true && diceThree.confirmed===false){
                 setDiceThree({...diceThree,confirmed:true})
                 setLeastOneDice(true)
-
+                if(diceThree.value===5){setCombo((prevState)=>({cinquante: prevState.cinquante +1}))}
+                if(diceThree.value===1){setCombo((prevState)=>({cent: prevState.cent +1}))}
                 }
+
             if (diceFour.keep===true && diceFour.confirmed===false){
                 setDiceFour({...diceFour,confirmed:true})
                 setLeastOneDice(true)
+                if(diceFour.value===5){setCombo((prevState)=>({cinquante: prevState.cinquante +1}))}
+                if(diceFour.value===1){setCombo((prevState)=>({cent: prevState.cent +1}))}
                 }
+
             if (diceFive.keep===true && diceFive.confirmed===false){
                 setDiceFive({...diceFive,confirmed:true})
                 setLeastOneDice(true)
+                if(diceFive.value===5){setCombo((prevState)=>({cinquante: prevState.cinquante +1}))}
+                if(diceFive.value===1){setCombo((prevState)=>({cent: prevState.cent +1}))}
                 }  
            }
     }
