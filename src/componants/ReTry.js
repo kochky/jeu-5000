@@ -1,6 +1,6 @@
 
 
-function ReTry({setGameOver,setIsCurrentPlay,setDiceOne,diceOne,setDiceTwo,diceTwo,setDiceThree,diceThree,setDiceFour,diceFour,setDiceFive,diceFive}){
+function ReTry({whosPlaying,setWhosPlaying,setGameOver,setIsCurrentPlay,setDiceOne,diceOne,setDiceTwo,diceTwo,setDiceThree,diceThree,setDiceFour,diceFour,setDiceFive,diceFive}){
 
     function handleClick(){//Remet le jeu a zero en cas de GameOver
         setGameOver(false)
@@ -10,9 +10,11 @@ function ReTry({setGameOver,setIsCurrentPlay,setDiceOne,diceOne,setDiceTwo,diceT
         setDiceFour({...diceFour,keep:false,confirmed:false})
         setDiceFive({...diceFive,keep:false,confirmed:false})
         setIsCurrentPlay(0)
+        if(whosPlaying==='player1'){setWhosPlaying('player2')}
+        else if (whosPlaying==='player2'){setWhosPlaying('player1')}
       }
     return(
-        <div>Tour terminé <button onClick={handleClick}>Recommencer</button></div>
+        <div>Tour terminé <button onClick={handleClick}>Changement de joueur</button></div>
     )
 }
 

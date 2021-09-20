@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import {pointState} from '../constants/constants'
 
 function DiceValue(){
-        return Math.floor(Math.random() * 6) + 1;
+        return Math.floor(Math.random() * 1) + 1;
 }
 
-function Roll({setGameOver,GameOver,Points,provPoints,setProvPoints,setPoints,setCombo,setIsCurrentPlay,IsCurrentPlay,leastOneDice,setLeastOneDice,diceOne,diceTwo,diceThree,diceFour,diceFive,setDiceOne,setDiceTwo,setDiceThree,setDiceFour,setDiceFive}){
+function Roll({setGameOver,GameOver,provPoints,setProvPoints,setPoints,setCombo,setIsCurrentPlay,IsCurrentPlay,leastOneDice,setLeastOneDice,diceOne,diceTwo,diceThree,diceFour,diceFive,setDiceOne,setDiceTwo,setDiceThree,setDiceFour,setDiceFive}){
    
     const[step,setStep]=useState(0)
 
@@ -41,8 +41,11 @@ function Roll({setGameOver,GameOver,Points,provPoints,setProvPoints,setPoints,se
         if(step===1)   {
             if((diceOne.value===5 && diceOne.confirmed!==true) || (diceOne.value===1&& diceOne.confirmed!==true) ||(diceTwo.value===5&& diceTwo.confirmed!==true) || (diceTwo.value===1&& diceTwo.confirmed!==true) || (diceThree.value===5 && diceThree.confirmed!==true)|| (diceThree.value===1&& diceThree.confirmed!==true)|| (diceFour.value ===5 && diceFour.confirmed!==true)|| (diceFour.value===1&& diceFour.confirmed!==true)|| (diceFive.value===5&& diceFive.confirmed!==true) || (diceFive.value===1&& diceFive.confirmed!==true)){
            setGameOver(false)
+           
+
             }else{
                 setGameOver(true)
+                
             }
             setStep(0)
         } 
@@ -52,7 +55,8 @@ function Roll({setGameOver,GameOver,Points,provPoints,setProvPoints,setPoints,se
    function handleClick(){//Valide mes dés gardés de côté quand je relance les dés
   
            if(step===0 && GameOver===false){
-            setPoints(prevState=>({...prevState,player1:prevState.player1 + provPoints[0].player1.total}))//valide les points provisoires en vrai point du tour
+            setPoints(prevState=>(prevState + provPoints.total))//valide les points provisoires en vrai point du tour
+           
             setProvPoints(pointState)
             setCombo({...setCombo,cinquante:0,cent:0})//remet a zero les combots pour calculer les prochains points des dés
             setLeastOneDice(false)// force la selection d'au moins un dé lorsqu'onjoue
