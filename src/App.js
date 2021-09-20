@@ -11,10 +11,11 @@ function App() {
 
   const [IsCurrentPlay,setIsCurrentPlay]= useState(0)//Etat du jeu lancé ou non
   const [GameOver,setGameOver]=useState(false)//Si les dés n'ont plus de 1 ou 5 le tour est terminé
-  const [Points, setPoints]= useState({player1:0,player2:0})//Les points de chaque joueur
-  const [provPoints,setProvPoints]=useState(pointState)
+  const [Points, setPoints]= useState({player1:0,player2:0})//Les points de chaque joueur du tour
+  const [provPoints,setProvPoints]=useState(pointState)//prends les dés du combo et les transforme en points par jet de dés
+  const [finalPoints,setFinalPoints]=useState({player1:0,player2:0})
     
-  const [combo,setCombo]=useState({cinquante:0,cent:0})
+  const [combo,setCombo]=useState({cinquante:0,cent:0})//additionne le nombre de dés 
   const [leastOneDice,setLeastOneDice]=useState(false)//Au moins un dé est gardé pour relancer les autres dés
 
   const [diceOne,setDiceOne]=useState(initialState)
@@ -27,7 +28,7 @@ function App() {
 return(
     
     <div className="container">
-      <Score combo={combo} Points={Points} setPoints={setPoints} provPoints={provPoints} setProvPoints={setProvPoints} GameOver={GameOver} />
+      <Score finalPoints={finalPoints} combo={combo} Points={Points} setPoints={setPoints} provPoints={provPoints} setProvPoints={setProvPoints} GameOver={GameOver} />
       {IsCurrentPlay?(<div className="dice-container">
         <Dice setCombo={setCombo} IsCurrentPlay={IsCurrentPlay} state={diceOne} setKeep={setDiceOne}/>
         <Dice setCombo={setCombo} IsCurrentPlay={IsCurrentPlay} state={diceTwo} setKeep={setDiceTwo}/>
@@ -59,7 +60,7 @@ return(
         />
         )
        :(<div>
-          <KeepPoints />
+          <KeepPoints  provPoints={provPoints}Points={Points}setFinalPoints={setFinalPoints} setGameOver={setGameOver} finalPoints={finalPoints} />
           <Roll 
               setGameOver={setGameOver}
               GameOver={GameOver}

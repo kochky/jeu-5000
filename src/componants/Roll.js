@@ -27,10 +27,10 @@ function Roll({setGameOver,GameOver,Points,provPoints,setProvPoints,setPoints,se
     
         if( step===2 &&( leastOneDice || IsCurrentPlay===1 )){
             
-            if(diceOne.keep===false ){setDiceOne({...diceOne,value:DiceValue()})}
-            if(diceTwo.keep===false){ setDiceTwo({...diceTwo,value:DiceValue()})}
+            if(diceOne.keep===false){setDiceOne({...diceOne,value:DiceValue()})}
+            if(diceTwo.keep===false){setDiceTwo({...diceTwo,value:DiceValue()})}
             if(diceThree.keep===false){setDiceThree({...diceThree,value:DiceValue()})}
-            if(diceFour.keep===false){ setDiceFour({...diceFour,value:DiceValue()})}
+            if(diceFour.keep===false){setDiceFour({...diceFour,value:DiceValue()})}
             if(diceFive.keep===false){setDiceFive({...diceFive,value:DiceValue()})}
             setStep(1)
         }

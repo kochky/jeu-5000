@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import {pointState} from '../constants/constants'
 
-function Score({combo,provPoints,setProvPoints,Points,setPoints,GameOver}){
+function Score({combo,provPoints,setProvPoints,Points,setPoints,GameOver,finalPoints}){
 
 
     useEffect(()=>{//Fais le calcul des points venant de l'état combo qui compte le nombre de dés gardés
@@ -46,7 +46,7 @@ function Score({combo,provPoints,setProvPoints,Points,setPoints,GameOver}){
 
 
     return(
-            <div>score provi:{provPoints[0].player1.total + Points.player1}  </div>
+            <div>score provi:{provPoints[0].player1.total + Points.player1}  score total:{finalPoints.player1} </div>
 
 
 
