@@ -1,6 +1,7 @@
-
+import DiceValue from "./DiceValue"
 
 function Dice({setCombo,state,setKeep,IsCurrentPlay}){
+    const result=DiceValue(state)
 
     function handleClick(){
         if(IsCurrentPlay){ 
@@ -17,9 +18,9 @@ function Dice({setCombo,state,setKeep,IsCurrentPlay}){
         }
     }
     return state.keep?(
-        <div  onClick={handleClick} className="dice keep">{state.value}</div>
+        <div  onClick={handleClick} className="dice keep">{result}</div>
     ):(
-        <div onClick={handleClick} className="dice ">{state.value}</div>
+        <div onClick={handleClick} className="dice ">{result}</div>
  
     )
 }

@@ -11,13 +11,64 @@
 
 .dice{
   width:50px;
+  min-width:50px;
+  min-height:50px;
   height:50px;
   background-color: white;
-  border:solid;
+  border: 1px solid grey;
   margin:20px;
- 
+  box-shadow: 2px 2px 5px black;
+  border-radius: 20%;
 }
 
 .keep{
   background-color:darkcyan;
+}
+
+.dicecontainer{
+  width:100%;
+  height:100%;
+  box-sizing: border-box;
+  position:relative;
+}
+
+.dicecontainer div {
+  position: absolute;
+  height:20%;
+  width:20%;
+  border-radius:100%;
+  background-color: black;
+
+}
+.dice-middle{
+  top:40%;
+  right:40%;
+}
+
+.dice-top-right{
+  top:15%;
+  right:15%;
+}
+.dice-bottom-left{
+  bottom:15%;
+  left:15%;
+}
+
+.dice-top-left{
+  top:15%;
+  left:15%;
+}
+.dice-bottom-right,.dice-four-fourth, .dice-five-fourth, .dice-six-fourth {
+  bottom:15%;
+  right:15%;
+}
+
+.dice-middle-left {
+  top:40%;
+  left:15%
+}
+
+.dice-middle-right {
+  top:40%;
+  right:15%
 }
