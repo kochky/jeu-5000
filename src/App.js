@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './App.css';
+import './css/App.css';
 import Dice from './componants/Dice';
 import Roll from './componants/Roll';
 import ReTry from './componants/ReTry';
@@ -7,9 +7,11 @@ import KeepPoints from './componants/KeepPoints';
 import Score from './componants/Score';
 import {pointState, initialState} from './constants/constants'
 import Win from './componants/Win';
+import NewGame from './componants/NewGame';
 
 function App() {
 
+  const [newGame, isNewGame]=useState(false)
   const [IsCurrentPlay,setIsCurrentPlay]= useState(0)//Etat du jeu lancé ou non
   const [GameOver,setGameOver]=useState(false)//Si les dés n'ont plus de 1 ou 5 le tour est terminé
   const [Points, setPoints]= useState(0)//Les points de chaque joueur du tour
@@ -26,12 +28,16 @@ function App() {
   const [diceFive,setDiceFive]=useState(initialState)
 
   if(finalPoints.player1 >=5000){return <div>Joueur 1 a gagné !!</div>}
-  else if(finalPoints.player1 >=5000){return <div>Joueur 2 a gagné !!</div>}
+  else if(finalPoints.player2 >=5000){return <div>Joueur 2 a gagné !!</div>}
   else{
     return(
+
+      
           
     
       <div className="container">
+        {!newGame ? <NewGame/>:''}
+        
         <div>Qui joue:{whosPlaying}</div>
         <Score  finalPoints={finalPoints} combo={combo} Points={Points} setPoints={setPoints} provPoints={provPoints} setProvPoints={setProvPoints} GameOver={GameOver} />
         {IsCurrentPlay?(<div className="dice-container">
