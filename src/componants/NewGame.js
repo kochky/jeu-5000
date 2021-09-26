@@ -1,4 +1,7 @@
 import Cube from './DicesTree';
+import Dices from './Canvas';
+import React from 'react'
+
 
 
 import '../css/NewGame.css';
@@ -10,8 +13,9 @@ function NewGame(){
 
     return (
         <div className="new-game"> 
-        <Cube />
-            <img src={img}/>
+        <Dices />
+            {/* <img src={img}/> */}
+     
             <h1>Jeu du 5000</h1>
             <div className="new-game-buttons">
                 <div>Nouvelle partie</div>

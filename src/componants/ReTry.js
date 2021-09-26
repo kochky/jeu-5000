@@ -1,3 +1,4 @@
+import React from 'react'
 
 
 function ReTry({whosPlaying,setWhosPlaying,setGameOver,setIsCurrentPlay,setDiceOne,diceOne,setDiceTwo,diceTwo,setDiceThree,diceThree,setDiceFour,diceFour,setDiceFive,diceFive}){

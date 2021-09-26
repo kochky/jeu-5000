@@ -1,3 +1,4 @@
+import React from 'react'
 function DiceValue(state){
  
     if (state.value===1){

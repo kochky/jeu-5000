@@ -1,3 +1,4 @@
+import React from 'react'
 import DiceValue from "./DiceValue"
 
 function Dice({setCombo,state,setKeep,IsCurrentPlay}){

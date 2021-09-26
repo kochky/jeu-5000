@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React,{ useState } from 'react';
 import './css/App.css';
 import Dice from './componants/Dice';
 import Roll from './componants/Roll';

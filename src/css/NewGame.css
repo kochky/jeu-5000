@@ -3,7 +3,7 @@
     height:100vh;
     position:absolute;
     z-index:99;
-    background-color:#e9c46a ;
+    background-color:#e9c46a;
     text-align: center;
 }
 
@@ -17,7 +17,8 @@
 .new-game-buttons {
     margin:0 auto;
     width:250px;
-    margin-top:20vh;
+    margin-top:50vh;
+
 }
 
 .new-game div div {
@@ -25,11 +26,14 @@
     color:#242423;
     margin-bottom:40px;
     text-align: center;
-
 }
 
- canvas, .canvas-container {
-   
+ canvas, .canvas-container {     
     position:absolute;
     box-sizing: border-box;
 } 
+
+.main {
+    z-index:-99;
+    position:absolute !important
+}

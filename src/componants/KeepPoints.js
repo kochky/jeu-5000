@@ -1,3 +1,4 @@
+import React from 'react'
 
 
 function KeepPoints({whosPlaying,setFinalPoints,finalPoints,Points,setGameOver,provPoints}){//sauvegarde les points quand on arrête le tour volontairement avant le game over
