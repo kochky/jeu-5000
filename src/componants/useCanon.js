@@ -10,7 +10,7 @@ export function Provider({ children }) {
   useEffect(() => {
     world.broadphase = new CANNON.NaiveBroadphase()
     world.solver.iterations = 10
-    world.gravity.set(0, 0, -1)
+    world.gravity.set(0, 0, -25)
   }, [world])
 
   // Run world stepper every frame
@@ -21,6 +21,7 @@ export function Provider({ children }) {
 
 // Custom hook to maintain a world physics body
 export function useCannon({ ...props }, fn, deps = []) {
+  
   const ref = useRef()
   // Get cannon world object
   const world = useContext(context)
