@@ -1,8 +1,6 @@
 import Cube from './DicesTree';
-import Dices from './Canvas';
 import React from 'react'
-
-
+import Dices from './3DDices';
 
 import '../css/NewGame.css';
 import img from '../images/dice.svg'
@@ -13,6 +11,7 @@ function NewGame(){
 
     return (
         <div className="new-game"> 
+        {/* <Dices /> */}
         <Dices />
             {/* <img src={img}/> */}
      
