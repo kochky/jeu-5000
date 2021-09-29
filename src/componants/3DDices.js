@@ -16,20 +16,13 @@ function getRandomInt(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
 }
-console.log(getRandomInt(-4,4))
+
 function getRandomIntQuater() {
   return Math.random() * 2;
 
 }
 
- function getRandomIntZ() {
-  return Math.floor(Math.random() * 50+10);
-}
 
-function getRandomIntX() {
-  return Math.floor(Math.random() * 5);
-
-}
 function Plane(props) {
     const [ref] = usePlane(() => ({ ...props }))
     return (
@@ -59,13 +52,16 @@ window.setTimeout(function() {
   api.velocity.set(getRandomInt(-10,10), getRandomInt(-10,10), 0)
      }, props.time);
      
-function handleClick(){
+function handleClick(e) {
+  console.log(e.movementX)
+  console.log(e.movementY)
+  console.log(-e.movementY)
 
-
+  api.velocity.set((e.movementX),-(e.movementY),0)
 }
 
 return (
-    <mesh  ref={ref} onClick={handleClick}>
+    <mesh  ref={ref} onPointerOver={handleClick}>
     <boxBufferGeometry attach="geometry" />
     <meshBasicMaterial map={texture_1} attachArray="material"  />
     <meshBasicMaterial map={texture_2} attachArray="material" />
@@ -79,8 +75,8 @@ return (
 
 function Cubes(){
     const array=[]
-    for(var i=1; i<50;i++){
-        array.push(<Cube  key={i} time={2000*i} rotation={[getRandomIntQuater(),getRandomIntQuater(),getRandomIntQuater(),getRandomIntQuater()]} position={[getRandomInt(-10,10), getRandomInt(-10,10),i*4+30]} />)
+    for(var i=1; i<20;i++){
+        array.push(<Cube  key={i} time={1000*i} rotation={[getRandomIntQuater(),getRandomIntQuater(),getRandomIntQuater(),getRandomIntQuater()]} position={[getRandomInt(-10,10), getRandomInt(-10,10),i*4+30]} />)
     }
     return array
 }
@@ -88,7 +84,7 @@ function Cubes(){
 function Dices(){
 
     return(
-        <Canvas linear="true" concurrent sRGB className="main"  camera={{fov:60, position: [0, 0, 10] }}>
+        <Canvas width="80%" linear="true" concurrent sRGB className="main"  camera={{fov:60, position: [0, 0, 10] }}>
             <Suspense fallback={null}>
                 <Physics  gravity={[0, 0, -25]}>
                     <Plane  position={[0, 0, -10]}/>

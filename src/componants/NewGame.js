@@ -11,13 +11,12 @@ function NewGame(){
 
     return (
         <div className="new-game"> 
-        {/* <Dices /> */}
         <Dices />
             {/* <img src={img}/> */}
      
             <h1>Jeu du 5000</h1>
             <div className="new-game-buttons">
-                <div>Nouvelle partie</div>
+                <div >Nouvelle partie</div>
                 <div>Règle du jeu</div>
             </div>
         </div>
