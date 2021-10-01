@@ -33,6 +33,7 @@ function Plane(props) {
     )
   }
   
+
 function Cube(props) {
 
 const texture_1 = useLoader(TextureLoader, img);
@@ -42,7 +43,7 @@ const texture_4 = useLoader(TextureLoader, dice4);
 const texture_5 = useLoader(TextureLoader, dice5);
 const texture_6 = useLoader(TextureLoader, dice2);
 
-const [ref,api] = useBox(() => ({ mass: 1,position: [0, 0, 20], rotation: [0.4, 0.2, 0.5], ...props}))
+const [ref,api] = useBox(() => ({ mass: 1, ...props}))
 const doZeroVelocity = useRef(false)
 
 useFrame(() => (!doZeroVelocity.current && api.velocity.set(0, 0, 0)))
@@ -53,15 +54,11 @@ window.setTimeout(function() {
      }, props.time);
      
 function handleClick(e) {
-  console.log(e.movementX)
-  console.log(e.movementY)
-  console.log(-e.movementY)
-
   api.velocity.set((e.movementX),-(e.movementY),0)
 }
 
 return (
-    <mesh  ref={ref} onPointerOver={handleClick}>
+    <mesh  pointer='grab' ref={ref}  onPointerOver={handleClick}>
     <boxBufferGeometry attach="geometry" />
     <meshBasicMaterial map={texture_1} attachArray="material"  />
     <meshBasicMaterial map={texture_2} attachArray="material" />
@@ -70,7 +67,7 @@ return (
     <meshBasicMaterial map={texture_5} attachArray="material" />
     <meshBasicMaterial map={texture_6} attachArray="material" />
     </mesh>
-)
+  )
 }
 
 function Cubes(){
@@ -90,8 +87,8 @@ function Dices(){
                     <Plane  position={[0, 0, -10]}/>
                     <Plane  position={[-16, 0, -10]} rotation={[0, 0.9, 0]} />
                     <Plane  position={[16, 0, -10]} rotation={[0, -0.9, 0]} />
-                    <Plane  position={[0, 10, -10]} rotation={[0.9, 0, 0]} />
-                    <Plane  position={[0, -10, -10]} rotation={[-0.9, 0, 0]} />
+                    <Plane  position={[0, 11, -10]} rotation={[0.9, 0, 0]} />
+                    <Plane  position={[0, -2, -10]} rotation={[-0.9, 0, 0]} />
                     <Cubes />
                 </Physics>
             </Suspense>

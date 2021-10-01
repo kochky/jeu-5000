@@ -7,25 +7,100 @@
     text-align: center;
 }
 
-.new-game img {
-    width:300px;
-    height:300px;
-    margin:0 auto;
-    margin-top:10%;
-}
-
 .new-game-buttons {
     margin:0 auto;
-    width:250px;
-    margin-top:50vh;
+    width:100%;
+    height:40vh;
+    font-size: 36px;
+    color:#264653;
+    text-align: center;
+    position:absolute;
+    bottom:20px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.marquee {
+    white-space: nowrap;
+    overflow: hidden;
+    position:relative;
+    height:20vh;
+    cursor:pointer;
+    
+}
+
+.marquee-scale {
+    transform:scaleY(0);
+    transition:all 150ms ease-in-out 150ms;
+    position:absolute;
+    z-index:100000;
 
 }
 
-.new-game div div {
-    font-size: 36px;
-    color:#242423;
-    margin-bottom:40px;
-    text-align: center;
+.marquee__inner {
+    display:none;
+    height:20vh;
+    line-height: 20vh;
+    width: fit-content;
+    position: relative;
+    animation: marquee 5s linear infinite 300ms;
+    animation-play-state: paused; 
+    transform: translate3d(-381px, 0, 0) ;
+
+}
+
+.marquee__inner span {
+    margin-right:350px;
+    width:385px;
+    font-family:'Righteous' ;
+    text-transform: uppercase;
+    transform:scale(2)
+}
+
+.marquee:hover .marquee__inner {
+    animation-play-state: running;
+    display:flex;
+    
+}
+
+.marquee:hover .marquee-scale {
+    transform: scaleY(1);
+    background-color:#264653;
+    color:#e9c46a;
+    border:2px solid ##e9c46a;  
+}
+
+.marquee:hover p {
+    transform:scale(2);
+    font-family:'Righteous' ;
+    text-transform: uppercase;
+ }
+ 
+
+ .marquee p {
+   transition:all 100ms ease-in-out;
+   line-height: 20vh;
+
+ }
+
+ @keyframes marquee {
+    0% {
+        transform: translate3d(-381px, 0, 0) ;
+    }
+
+    100% {
+        transform: translate3d(-1116px, 0, 0) ;
+    }
+}
+@keyframes scale {
+    0% {
+        transform: scaleY(0) ;
+    }
+
+    100% {
+        transform: scaleY(1) ;
+    }
 }
 
  canvas, .canvas-container {     
@@ -36,4 +111,8 @@
 .main {
     z-index:-99;
     position:absolute !important
+}
+
+.title{
+    margin-top:10%;
 }
