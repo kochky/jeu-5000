@@ -44,22 +44,22 @@
     line-height: 20vh;
     width: fit-content;
     position: relative;
-    animation: marquee 5s linear infinite 300ms;
-    animation-play-state: paused; 
-    transform: translate3d(-381px, 0, 0) ;
-
 }
 
 .marquee__inner span {
-    margin-right:350px;
-    width:385px;
+    margin-right:300px;
+    /* width:385px; */
     font-family:'Righteous' ;
     text-transform: uppercase;
     transform:scale(2)
 }
 
+.nouvelle-partie span {
+    margin-right:355px;
+}
+
 .marquee:hover .marquee__inner {
-    animation-play-state: running;
+    animation-play-state: running !important;
     display:flex;
     
 }
@@ -82,17 +82,10 @@
    transition:all 100ms ease-in-out;
    line-height: 20vh;
 
+
  }
 
- @keyframes marquee {
-    0% {
-        transform: translate3d(-381px, 0, 0) ;
-    }
 
-    100% {
-        transform: translate3d(-1116px, 0, 0) ;
-    }
-}
 @keyframes scale {
     0% {
         transform: scaleY(0) ;
