@@ -1,37 +1,30 @@
 import React,{useState,useEffect} from 'react'
+import Modal from './Modal'
+import MenuMarquee from './MenuMarquee'
 
 function Menu(){
 
+    const [isClicked,setIsClicked]=useState(true)
     const [width,setWidth]=useState(window.innerWidth)
+    const [transformOrigin,setTransformOrigin]=useState('marquee-scale')
 
-    useEffect(() => {
+    useEffect(() => {//détecte le resizing de la fenêtre
         window.addEventListener('resize',()=>setWidth(window.innerWidth))
     }, [])
-    
-    useEffect(() => {
-       console.log(width)
-    }, [width])
 
-    const widthOverflow= width/2-6167
+
+    const widthOverflow= width/2-6167//cale le nouvelle partie avec le marquee qui defile
     const divTransform= {
         transform: 'translate3d('+(widthOverflow)+'px, 0, 0)' ,
-        animation:'marquee 5s linear infinite 300ms paused',
     }
 
-    const widthOverflowRegle= width/2-6273
+    const widthOverflowRegle= width/2-6273 //cale les règles du jeu avec le marquee
     const divTransformRegle= {
         transform: 'translate3d('+(widthOverflowRegle)+'px, 0, 0)',
-        animation:'marqueeRegle 5s linear infinite 300ms paused',
-  
     }
-
-
-    return(
-        <div className="new-game-buttons">
-            <div className="marquee">
-               <div className='marquee-scale'>
-               <style>{`
-           @keyframes marquee {
+   
+    const nouvellePartieAnimation=  (<style>{`
+        @keyframes marquee {
             0% {
                 transform: translate3d(${widthOverflow}px, 0, 0) ;
             }
@@ -39,73 +32,31 @@ function Menu(){
                 transform: translate3d(${widthOverflow-668}px, 0, 0) ;
             }
         }
-        `}</style>
-                <div style={divTransform}className="marquee__inner nouvelle-partie">
-                        <span>NOUVELLE PARTIE</span>
-                        <span>NOUVELLE PARTIE</span>
-                        <span>NOUVELLE PARTIE</span>
-                        <span>NOUVELLE PARTIE</span>
-                        <span>NOUVELLE PARTIE</span>
-                        <span>NOUVELLE PARTIE</span>
-                        <span>NOUVELLE PARTIE</span>
-                        <span>NOUVELLE PARTIE</span>
-                        <span>NOUVELLE PARTIE</span>
-                        <span>NOUVELLE PARTIE</span>
-                        <span>NOUVELLE PARTIE</span>
-                        <span>NOUVELLE PARTIE</span>
-                        <span>NOUVELLE PARTIE</span>
-                        <span>NOUVELLE PARTIE</span>
-                        <span>NOUVELLE PARTIE</span>
-                        <span>NOUVELLE PARTIE</span>
-                        <span>NOUVELLE PARTIE</span>
-                        <span>NOUVELLE PARTIE</span>
-                    </div>
-                </div> 
-                <p>Nouvelle partie</p>
-            </div>
+    `}</style>)
 
-            <div className="marquee">
-                <div className='marquee-scale'>
-                <style>{`
-           @keyframes marqueeRegle {
+    const regleAnimation=(<style>{`
+        @keyframes marqueeRegle {
             0% {
                 transform: translate3d(${widthOverflowRegle}px, 0, 0) ;
             }
             100% {
-                transform: translate3d(${widthOverflowRegle-668}px, 0, 0) ;
+                transform: translate3d(${widthOverflowRegle-560}px, 0, 0) ;
             }
         }
         `}</style>
-                    <div style={divTransformRegle} className="marquee__inner regle-du-jeu" >
-                        <span>REGLES DU JEU</span>
-                        <span>REGLES DU JEU</span>
-                        <span>REGLES DU JEU</span>
-                        <span>REGLES DU JEU</span>
-                        <span>REGLES DU JEU</span>
-                        <span>REGLES DU JEU</span>
-                        <span>REGLES DU JEU</span>
-                        <span>REGLES DU JEU</span>
-                        <span>REGLES DU JEU</span>
-                        <span>REGLES DU JEU</span>
-                        <span>REGLES DU JEU</span>
-                        <span>REGLES DU JEU</span>
-                        <span>REGLES DU JEU</span>
-                        <span>REGLES DU JEU</span>
-                        <span>REGLES DU JEU</span>
-                        <span>REGLES DU JEU</span>
-                        <span>REGLES DU JEU</span>
-                        <span>REGLES DU JEU</span>
-                        <span>REGLES DU JEU</span>
-                        <span>REGLES DU JEU</span>
-                        <span>REGLES DU JEU</span>
-                        <span>REGLES DU JEU</span>
-                        <span>REGLES DU JEU</span>
-                    </div>
-                </div>   
-                <p>Règles du jeu</p>
-            </div>
-        </div>
+
     )
+
+    return !isClicked?(
+        <div className="new-game-buttons">
+           
+            <MenuMarquee setIsClicked={setIsClicked} style={divTransform} string={"Nouvelle partie"} classname={"marquee__inner nouvelle-partie"} animation={nouvellePartieAnimation} />            
+            <MenuMarquee setIsClicked={setIsClicked} style={divTransformRegle} string={"Règles du jeu"} classname={"marquee__inner regle-du-jeu"} animation={regleAnimation} />            
+           
+        </div>
+        ):(
+          <Modal />  
+        )
 
 }
 

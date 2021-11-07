@@ -27,7 +27,7 @@ function Plane(props) {
     const [ref] = usePlane(() => ({ ...props }))
     return (
       <mesh ref={ref} >
-        <planeBufferGeometry attach="geometry" args={[1, 1]} />
+        <planeBufferGeometry attach="geometry" args={[100, 100]} />
         <meshBasicMaterial attach="material" color="#e9c46a" />
       </mesh>
     )
@@ -72,8 +72,8 @@ return (
 
 function Cubes(){
     const array=[]
-    for(var i=1; i<20;i++){
-        array.push(<Cube  key={i} time={1000*i} rotation={[getRandomIntQuater(),getRandomIntQuater(),getRandomIntQuater(),getRandomIntQuater()]} position={[getRandomInt(-10,10), getRandomInt(-10,10),i*4+30]} />)
+    for(var i=1; i<40;i++){
+        array.push(<Cube  key={i} time={100*i} rotation={[getRandomIntQuater(),getRandomIntQuater(),getRandomIntQuater(),getRandomIntQuater()]} position={[getRandomInt(-10,10), getRandomInt(-10,10),i*4+10]} />)
     }
     return array
 }

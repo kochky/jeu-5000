@@ -5,8 +5,6 @@ function KeepPoints({whosPlaying,setFinalPoints,finalPoints,Points,setGameOver,p
 
     function handleClick(){
        
-        
-        
         if(whosPlaying==='player1'){
             setFinalPoints({...finalPoints,player1:finalPoints.player1 + Points +provPoints.total})
         } else if (whosPlaying==='player2'){
