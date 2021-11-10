@@ -4,7 +4,7 @@ import MenuMarquee from './MenuMarquee'
 
 function Menu(){
 
-    const [isClicked,setIsClicked]=useState(true)
+    const [isClicked,setIsClicked]=useState(false)
     const [width,setWidth]=useState(window.innerWidth)
     const [transformOrigin,setTransformOrigin]=useState('marquee-scale')
 
@@ -47,16 +47,18 @@ function Menu(){
 
     )
 
-    return !isClicked?(
+    return (
         <div className="new-game-buttons">
            
             <MenuMarquee setIsClicked={setIsClicked} style={divTransform} string={"Nouvelle partie"} classname={"marquee__inner nouvelle-partie"} animation={nouvellePartieAnimation} />            
+            {isClicked && <Modal setIsClicked={setIsClicked} name={isClicked} />}  
             <MenuMarquee setIsClicked={setIsClicked} style={divTransformRegle} string={"Règles du jeu"} classname={"marquee__inner regle-du-jeu"} animation={regleAnimation} />            
            
         </div>
-        ):(
-          <Modal />  
         )
+        // :(
+        //   <Modal />  
+        // )
 
 }
 

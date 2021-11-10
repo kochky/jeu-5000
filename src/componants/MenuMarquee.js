@@ -3,7 +3,11 @@ import { useState } from 'react'
 function MenuMarquee({setIsClicked,style,string,classname,animation}){
 
     const [transformOrigin,setTransformOrigin]=useState('marquee-scale')
+    
+    function handleClick(){
+        setIsClicked(string)
 
+    }
     function mouseEnter(e){//détecte si la souris arrive par le haut ou le bas
             if(e.clientY -e.currentTarget.getBoundingClientRect().top > 50 ){
                setTransformOrigin('marquee-scale transform-bottom')
@@ -21,7 +25,7 @@ function MenuMarquee({setIsClicked,style,string,classname,animation}){
         }
     
     return (
-        <div onMouseEnter={mouseEnter} onMouseLeave={mouseLeave} className="marquee">
+        <div onClick={handleClick} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave} className="marquee">
             <div className={transformOrigin}>
                 {animation}
                 <div style={style} className={classname} >

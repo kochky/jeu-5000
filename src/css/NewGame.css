@@ -1,6 +1,6 @@
 .new-game {
     width:100%;
-    height:100vh;
+    height:100%;
     position:absolute;
     z-index:99;
     background-color:#e9c46a;
@@ -10,15 +10,14 @@
 .new-game-buttons {
     margin:0 auto;
     width:100%;
-    height:20vh;
+    height:40vh;
     font-size: 36px;
     color:#264653;
     text-align: center;
     position:absolute;
-    bottom:20%;
+    bottom:0vh;
     display:flex;
     flex-direction: column;
-    justify-content: space-around;
 }
 
 .marquee {
@@ -32,7 +31,7 @@
 .marquee-scale {
     position:absolute;
     height:10vh;
-    z-index:100000;
+    z-index:100;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
     transform: translate3d(0, -100%, 0);
