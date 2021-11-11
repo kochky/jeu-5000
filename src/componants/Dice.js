@@ -21,7 +21,7 @@ function Dice({setCombo,state,setKeep,IsCurrentPlay}){
     return state.keep?(
         <div  onClick={handleClick} className="dice keep">{result}</div>
     ):(
-        <div onClick={handleClick} className="dice ">{result}</div>
+        <div onClick={handleClick} className="dice">{result}</div>
  
     )
 }

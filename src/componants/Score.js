@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import {pointState} from '../constants/constants'
 
 function Score({combo,provPoints,setProvPoints,Points,setPoints,GameOver,finalPoints}){

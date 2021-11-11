@@ -9,12 +9,17 @@ body {
   min-width:375px;  
 }
 
-*{
+* {
   margin:0
 }
+
 h1 {
   font-size: 60px;
   color:#264653;
+}
 
+#root {
+  background-color: #e9c46a;
+  height:100vh
 }
 

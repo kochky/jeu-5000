@@ -2,9 +2,9 @@ import '../css/Modal.css';
 import img from '../images/cross.svg'
 import Gameboard from './GameBoard';
 
-function Modal({setIsClicked,name}){
+function Modal({setIsClicked}){
 
-    return name==="Règles du jeu"? (
+    return  (
         <div className="modal">
             <div className="modal-head">Règles du jeu</div>
             <div className="modal-body">
@@ -25,17 +25,8 @@ function Modal({setIsClicked,name}){
                     3 dés de 5 : 500 points<br/>
 
                 </div>
-        </div>
-     ):(
-        <div className="modal">
-        <div className="modal-head">Nouvelle Partie</div>
-        <div className="modal-body">
-            <img onClick={()=>setIsClicked(false)}className="modal-cross"width={30} src={img}/>
-            <Gameboard />
-            
-            </div>
-    </div>
-     )
+        </div>)
+    
 }
 
 export default Modal

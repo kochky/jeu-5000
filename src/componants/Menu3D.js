@@ -70,21 +70,21 @@ return (
 function Cubes(){
     const array=[]
     for(var i=1; i<40;i++){
-        array.push(<Cube  key={i} time={100*i} rotation={[getRandomIntQuater(),getRandomIntQuater(),getRandomIntQuater(),getRandomIntQuater()]} position={[getRandomInt(-10,10), getRandomInt(-10,10),i*4+10]} />)
+        array.push(<Cube key={i} time={100*i} rotation={[getRandomIntQuater(),getRandomIntQuater(),getRandomIntQuater(),getRandomIntQuater()]} position={[getRandomInt(-10,10), getRandomInt(-10,10),i*4+10]} />)
     }
     return array
 }
   
 function Dices(){
     return(
-        <Canvas  linear="true" concurrent sRGB className="main"  camera={{fov:60, position: [0, 0, 10] }}>
+        <Canvas style={{width:'100vw',height:'60vw'}} linear="true" concurrent sRGB className="main"  camera={{fov:60, position: [0, 0, 10] }}>
             <Suspense fallback={null}>
                 <Physics  gravity={[0, 0, -25]}>
                     <Plane  position={[0, 0, -10]}/>
                     <Plane  position={[-16, 0, -10]} rotation={[0, 0.9, 0]} />
                     <Plane  position={[16, 0, -10]} rotation={[0, -0.9, 0]} />
                     <Plane  position={[0, 11, -10]} rotation={[0.9, 0, 0]} />
-                    <Plane  position={[0, -2, -10]} rotation={[-0.9, 0, 0]} />
+                    <Plane  position={[0, -8, -10]} rotation={[-0.9, 0, 0]} />
                     <Cubes />
                 </Physics>
             </Suspense>

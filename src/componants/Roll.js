@@ -5,7 +5,7 @@ function DiceValue(){
         return Math.floor(Math.random() * 6) + 1;
 }
 
-function Roll({setGameOver,GameOver,provPoints,setProvPoints,setPoints,setCombo,setIsCurrentPlay,IsCurrentPlay,leastOneDice,setLeastOneDice,diceOne,diceTwo,diceThree,diceFour,diceFive,setDiceOne,setDiceTwo,setDiceThree,setDiceFour,setDiceFive}){
+function Roll({setRolled,setGameOver,GameOver,provPoints,setProvPoints,setPoints,setCombo,setIsCurrentPlay,IsCurrentPlay,leastOneDice,setLeastOneDice,diceOne,diceTwo,diceThree,diceFour,diceFive,setDiceOne,setDiceTwo,setDiceThree,setDiceFour,setDiceFive}){
    
     const[step,setStep]=useState(0)
 
@@ -46,17 +46,19 @@ function Roll({setGameOver,GameOver,provPoints,setProvPoints,setPoints,setCombo,
                 setGameOver(true)
                           }
             setStep(0)
+            setRolled(true)
+
         } 
     },[step])
 
    function handleClick(){//Valide mes dés gardés de côté quand je relance les dés
-  
+            setRolled(false)
            if(step===0 && GameOver===false){
             setPoints(prevState=>(prevState + provPoints.total))//valide les points provisoires en vrai point du tour
            
             setProvPoints(pointState)
-            setCombo({...setCombo,cinquante:0,cent:0})//remet a zero les combots pour calculer les prochains points des dés
-            setLeastOneDice(false)// force la selection d'au moins un dé lorsqu'onjoue
+            setCombo({...setCombo,cinquante:0,cent:0})//remet a zero les combos pour calculer les prochains points des dés
+            setLeastOneDice(false)// force la selection d'au moins un dé lorsqu'on joue
             setIsCurrentPlay(IsCurrentPlay+1)//permet de voir si la partie est lancée et si c'est le premier jet de dé
             setGameOver()//efface le game over en cas de relance
             setStep(3)

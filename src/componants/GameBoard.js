@@ -7,6 +7,7 @@ import KeepPoints from './KeepPoints';
 import Score from './Score';
 import {pointState, initialState} from '../constants/constants'
 import Win from './Win';
+import GameBoard3D from './GameBoard3D';
 
 function Gameboard() {
 
@@ -19,6 +20,7 @@ function Gameboard() {
   const [whosPlaying,setWhosPlaying]=useState('player1')//permet de changer de joueur
   const [combo,setCombo]=useState({cinquante:0,cent:0})//additionne le nombre de dés 
   const [leastOneDice,setLeastOneDice]=useState(false)//Au moins un dé est gardé pour relancer les autres dés
+  const [rolled,setRolled]=useState(false)
 
   const [diceOne,setDiceOne]=useState(initialState)
   const [diceTwo,setDiceTwo]=useState(initialState)
@@ -34,7 +36,7 @@ function Gameboard() {
       
       <React.Fragment>
     
-        
+        <GameBoard3D rolled={rolled} one={diceOne} two={diceTwo} three={diceThree} four={diceFour} five={diceFive} IsCurrentPlay={IsCurrentPlay}/>
         
         <div>Qui joue:{whosPlaying}</div>
         <Score  finalPoints={finalPoints} combo={combo} Points={Points} setPoints={setPoints} provPoints={provPoints} setProvPoints={setProvPoints} GameOver={GameOver} />
@@ -74,8 +76,8 @@ function Gameboard() {
         :(<div>
             <KeepPoints whosPlaying={whosPlaying} provPoints={provPoints}Points={Points}setFinalPoints={setFinalPoints} setGameOver={setGameOver} finalPoints={finalPoints} />
             <Roll 
+                setRolled={setRolled}
               
-                
                 setGameOver={setGameOver}
                 GameOver={GameOver}
                 
