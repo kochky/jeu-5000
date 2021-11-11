@@ -99,8 +99,8 @@ function Roll({setRolled,setGameOver,GameOver,provPoints,setProvPoints,setPoints
 
     if((diceOne.keep && !diceOne.confirmed)|| (diceTwo.keep&& !diceTwo.confirmed)|| (diceThree.keep &&!diceThree.confirmed) ||(diceFour.keep &&!diceFour.confirmed) ||(diceFive.keep && !diceFive.confirmed) || IsCurrentPlay===0 ){
     return (
-       <button onClick={handleClick}>Lancer les dés</button>)}
-    else{return (<div>Choisissez au moins un dé</div>)}
+       <button className="roll-button"onClick={handleClick}>Lancer les dés</button>)}
+    else{return (<div className="pick-message">Choisissez au moins un dé</div>)}
 }
 
 export default Roll

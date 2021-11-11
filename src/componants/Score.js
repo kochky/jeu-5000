@@ -48,10 +48,12 @@ function Score({combo,provPoints,setProvPoints,Points,setPoints,GameOver,finalPo
 
     return(
             <div>
-             <div> score provi:{provPoints.total + Points}  </div>
-             <div> score total joueur 1:{finalPoints.player1} </div>
-             <div> score total joueur 2:{finalPoints.player2} </div>
+             <div className="score-provi-message">Score provisoire:{provPoints.total + Points}  </div>
+              <div className="score-total-container">
+                <div className="score-total-joueur1-message">Score total joueur 1:{finalPoints.player1} </div>
+                <div className="score-total-joueur2-message">Score total joueur 2:{finalPoints.player2} </div>
               </div>
+            </div>
 
 
 

@@ -1,70 +1,105 @@
-
-
-.dice-container {
-  display:flex;
-  justify-content: space-around;
-}
-
-.dice{
-  width:50px;
-  min-width:50px;
-  min-height:50px;
-  height:50px;
-  background-color: white;
-  border: 1px solid grey;
-  margin:20px;
-  box-shadow: 2px 2px 5px black;
-  border-radius: 20%;
-}
-
-.keep{
-  background-color:darkcyan;
-}
-
-.dicecontainer{
-  width:100%;
-  height:100%;
+.container {
+  border:10px solid #264653;
+  width:100vw;
+  height:100vh;
   box-sizing: border-box;
+  color:#264653;
+  font-family:'Righteous' ;
+  font-size: 20px;
   position:relative;
 }
 
-.dicecontainer div {
-  position: absolute;
-  height:20%;
-  width:20%;
-  border-radius:100%;
-  background-color: black;
-
-}
-.dice-middle{
-  top:40%;
-  right:40%;
+.gameboard {
+  box-sizing: border-box;
 }
 
-.dice-top-right{
-  top:15%;
-  right:15%;
-}
-.dice-bottom-left{
-  bottom:15%;
-  left:15%;
+.launch-message, .end-message {
+  position:absolute;
+  top:20vh;
+  right:0;
+  left:0;
+  text-align: center;
+
 }
 
-.dice-top-left{
-  top:15%;
-  left:15%;
-}
-.dice-bottom-right,.dice-four-fourth, .dice-five-fourth, .dice-six-fourth {
-  bottom:15%;
-  right:15%;
-}
-
-.dice-middle-left {
-  top:40%;
-  left:15%
+.end-message {
+  opacity:0;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  animation:opacity;
+  animation-delay: 3s;
+  animation-fill-mode:forwards;
 }
 
-.dice-middle-right {
-  top:40%;
-  right:15%
+@keyframes opacity {
+  
+  100% {opacity:1}
+}
+
+.player-message {
+  position:absolute;
+  top:40vh;
+  right:10vw;
+}
+
+.score-provi-message {
+  position:absolute;
+  top:50vh;
+  right:10vw;
+}
+
+.score-total-container {
+  position:absolute;
+  bottom:0vh;
+  margin-top:20vh;
+  display:flex;
+  width:100%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+ background-color: #264653;
+}
+.score-total-container div{
+  width:100%;
+  text-align: center;
+  height:10vh;
+  line-height: 10vh;
+  font-size: 60px;
+  color:#e9c46a;
+}
+
+.keep-button, .roll-button, .end-button {
+  background-color: #264653;
+  color:#e9c46a;
+  height:60px;
+  width:150px;
+  font-family:'Righteous' ;
+  text-transform:uppercase;
+  border-radius: 5%;
+  position:absolute;
+}
+
+.end-button{
+  position: relative !important;
+  margin-top:50px;
+}
+
+.keep-button{
+  top:60vh;
+  right:60vw;
+}
+
+.roll-button{
+  top:60vh;
+  left:60vw
+}
+
+.pick-message {
+  position:absolute;
+  top:60vh;
+  right:45vh;
+  opacity:0;
+  animation:opacity;
+  animation-delay: 4s;
+  animation-fill-mode:forwards;
 }

@@ -15,7 +15,7 @@ function ReTry({whosPlaying,setWhosPlaying,setGameOver,setIsCurrentPlay,setDiceO
         else if (whosPlaying==='player2'){setWhosPlaying('player1')}
       }
     return(
-        <div>Tour terminé <button onClick={handleClick}>Changement de joueur</button></div>
+        <h1 className="end-message">Tour terminé <button className="end-button" onClick={handleClick}>Changement de joueur</button></h1>
     )
 }
 

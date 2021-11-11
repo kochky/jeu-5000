@@ -1,6 +1,6 @@
-import React, { Suspense, useRef,useState,useEffect } from 'react'
-import { Canvas, useFrame, useLoader } from 'react-three-fiber'
-import { Physics, usePlane, useBox } from '@react-three/cannon'
+import { useRef } from 'react'
+import { useFrame, useLoader } from 'react-three-fiber'
+import { useBox } from '@react-three/cannon'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 
 import img from '../images/face1.png'
@@ -19,16 +19,6 @@ function getRandomInt(min, max) {
 function getRandomIntQuater() {
   return Math.random() * 2;
 
-}
-
-function Plane(props) {
-    const [ref] = usePlane(() => ({ ...props }))
-    return (
-      <mesh ref={ref} >
-        <planeBufferGeometry attach="geometry" args={[100, 100]} />
-        <meshBasicMaterial attach="material" color="#e9c46a" />
-      </mesh>
-    )
 }
 
 function Cube(props) {
@@ -74,21 +64,5 @@ function Cubes(){
     }
     return array
 }
-  
-function Dices(){
-    return(
-        <Canvas style={{width:'100vw',height:'60vw'}} linear="true" concurrent sRGB className="main"  camera={{fov:60, position: [0, 0, 10] }}>
-            <Suspense fallback={null}>
-                <Physics  gravity={[0, 0, -25]}>
-                    <Plane  position={[0, 0, -10]}/>
-                    <Plane  position={[-16, 0, -10]} rotation={[0, 0.9, 0]} />
-                    <Plane  position={[16, 0, -10]} rotation={[0, -0.9, 0]} />
-                    <Plane  position={[0, 11, -10]} rotation={[0.9, 0, 0]} />
-                    <Plane  position={[0, -8, -10]} rotation={[-0.9, 0, 0]} />
-                    <Cubes />
-                </Physics>
-            </Suspense>
-        </Canvas>) 
-}
-  
- export default Dices
+
+export default Cubes

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Dices from './componants/Menu3D';
+import Dices from './componants/MenuThree';
 import Menu from './componants/Menu';
-import GameBoard from './componants/GameBoard';
+import GameBoard3D from './componants/GameBoardThree';
 
 import './css/NewGame.css';
 
@@ -12,7 +12,7 @@ function App(){
     const [isClicked,setIsClicked]=useState(false)
     
     return isClicked==="Nouvelle partie"?(
-        <GameBoard />
+        <GameBoard3D setIsClicked={setIsClicked}/>
     )
     :(
         <div className="new-game"> 
