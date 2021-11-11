@@ -1,6 +1,6 @@
 import '../css/Modal.css';
 import img from '../images/cross.svg'
-
+import Gameboard from './GameBoard';
 
 function Modal({setIsClicked,name}){
 
@@ -26,7 +26,16 @@ function Modal({setIsClicked,name}){
 
                 </div>
         </div>
-     ):('')
+     ):(
+        <div className="modal">
+        <div className="modal-head">Nouvelle Partie</div>
+        <div className="modal-body">
+            <img onClick={()=>setIsClicked(false)}className="modal-cross"width={30} src={img}/>
+            <Gameboard />
+            
+            </div>
+    </div>
+     )
 }
 
 export default Modal

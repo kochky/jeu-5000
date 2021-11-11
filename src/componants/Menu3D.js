@@ -1,8 +1,7 @@
-import React, { Suspense, useRef,useState } from 'react'
+import React, { Suspense, useRef,useState,useEffect } from 'react'
 import { Canvas, useFrame, useLoader } from 'react-three-fiber'
 import { Physics, usePlane, useBox } from '@react-three/cannon'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
-
 
 import img from '../images/face1.png'
 import dice2 from '../images/face2.jpg'
@@ -22,7 +21,6 @@ function getRandomIntQuater() {
 
 }
 
-
 function Plane(props) {
     const [ref] = usePlane(() => ({ ...props }))
     return (
@@ -31,8 +29,7 @@ function Plane(props) {
         <meshBasicMaterial attach="material" color="#e9c46a" />
       </mesh>
     )
-  }
-  
+}
 
 function Cube(props) {
 
@@ -58,14 +55,14 @@ function handleClick(e) {
 }
 
 return (
-    <mesh  pointer='grab' ref={ref}  onPointerOver={handleClick}>
-    <boxBufferGeometry attach="geometry" />
-    <meshBasicMaterial map={texture_1} attachArray="material"  />
-    <meshBasicMaterial map={texture_2} attachArray="material" />
-    <meshBasicMaterial map={texture_3} attachArray="material" />
-    <meshBasicMaterial map={texture_4} attachArray="material" />
-    <meshBasicMaterial map={texture_5} attachArray="material" />
-    <meshBasicMaterial map={texture_6} attachArray="material" />
+    <mesh ref={ref} onPointerOver={handleClick}>
+      <boxBufferGeometry attach="geometry" />
+      <meshBasicMaterial map={texture_1} attachArray="material"  />
+      <meshBasicMaterial map={texture_2} attachArray="material" />
+      <meshBasicMaterial map={texture_3} attachArray="material" />
+      <meshBasicMaterial map={texture_4} attachArray="material" />
+      <meshBasicMaterial map={texture_5} attachArray="material" />
+      <meshBasicMaterial map={texture_6} attachArray="material" />
     </mesh>
   )
 }
@@ -79,9 +76,8 @@ function Cubes(){
 }
   
 function Dices(){
-
     return(
-        <Canvas width="80%" linear="true" concurrent sRGB className="main"  camera={{fov:60, position: [0, 0, 10] }}>
+        <Canvas  linear="true" concurrent sRGB className="main"  camera={{fov:60, position: [0, 0, 10] }}>
             <Suspense fallback={null}>
                 <Physics  gravity={[0, 0, -25]}>
                     <Plane  position={[0, 0, -10]}/>

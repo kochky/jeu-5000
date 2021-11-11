@@ -2,9 +2,8 @@ import React,{useState,useEffect} from 'react'
 import Modal from './Modal'
 import MenuMarquee from './MenuMarquee'
 
-function Menu(){
+function Menu({setIsClicked,isClicked}){
 
-    const [isClicked,setIsClicked]=useState(false)
     const [width,setWidth]=useState(window.innerWidth)
     const [transformOrigin,setTransformOrigin]=useState('marquee-scale')
 
