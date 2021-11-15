@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   user-select: none;
-  min-width:315px;
+  min-width:375px;
 }
 
 * {

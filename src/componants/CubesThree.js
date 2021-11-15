@@ -18,7 +18,6 @@ function getRandomInt(min, max) {
 
 function getRandomIntQuater() {
   return Math.random() * 2;
-
 }
 
 function Cube(props) {
@@ -60,7 +59,7 @@ return (
 function Cubes(){
     const array=[]
     for(var i=1; i<40;i++){
-        array.push(<Cube key={i} time={100*i} rotation={[getRandomIntQuater(),getRandomIntQuater(),getRandomIntQuater(),getRandomIntQuater()]} position={[getRandomInt(-10,10), getRandomInt(-10,10),i*4+10]} />)
+        array.push(<Cube key={i} time={100*i} rotation={[getRandomIntQuater(),getRandomIntQuater(),getRandomIntQuater()]} position={[getRandomInt(-10,10), getRandomInt(-10,10),i*4+10]} />)
     }
     return array
 }

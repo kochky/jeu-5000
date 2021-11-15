@@ -37,7 +37,7 @@ function GameBoard3D({setIsClicked}){
     return(
       <div className="container">
         <img alt="close icon"onClick={()=>setIsClicked(false)}className="modal-cross"width={30} src={img}/>
-        <Canvas  style={{width:'90vw'}} linear="true" concurrent sRGB className="gameboard"  camera={{fov:60, position: [0, 0, 10] }}>
+        <Canvas style={{height:'80vw'}} linear="true" concurrent sRGB className="gameboard"  camera={{fov:60, position: [0, 0, 10] }}>
             <Suspense fallback={null}>
                 <Physics  gravity={[0, 0, -25]}>
                     <Plane  position={[0, 0, -10]}/>
