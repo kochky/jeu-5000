@@ -8,7 +8,7 @@ import Plane from './PlaneThree'
   
 function Dices(){
     return(
-        <Canvas  linear="true" concurrent sRGB className="main"  camera={{fov:60, position: [0, 0, 10] }}>
+        <Canvas  style={{height:'40vh'}} linear="true" concurrent sRGB className="main"  camera={{fov:60, position: [0, 0, 10] }}>
             <Suspense fallback={null}>
                 <Physics  gravity={[0, 0, -25]}>
                     <Plane  position={[0, 0, -10]}/>
