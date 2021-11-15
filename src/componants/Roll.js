@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import {pointState} from '../constants/constants'
 
+
 function DiceValue(){
         return Math.floor(Math.random() * 6) + 1;
 }
 
 function Roll({setRolled,setGameOver,GameOver,provPoints,setProvPoints,setPoints,setCombo,setIsCurrentPlay,IsCurrentPlay,leastOneDice,setLeastOneDice,diceOne,diceTwo,diceThree,diceFour,diceFive,setDiceOne,setDiceTwo,setDiceThree,setDiceFour,setDiceFive}){
-   
     const[step,setStep]=useState(0)
 
     useEffect(()=>{//Si les 5 dés sont gardés alors ils sont de retour en jeu

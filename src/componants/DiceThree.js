@@ -1,6 +1,7 @@
-import { useLoader } from '@react-three/fiber'
+import {  useLoader } from '@react-three/fiber'
 import { useBox } from '@react-three/cannon'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
+import create from "zustand"
 
 import img from '../images/face1.png'
 import dice2 from '../images/face2.jpg'
@@ -13,7 +14,18 @@ import sound from '../sound/roll.wav'
 
 
 function DiceThree({name,position,rotation,setCombo,state,setKeep,IsCurrentPlay}) {
- 
+  const ping = new Audio(sound)
+  const [useStore] = create((set) => ({
+    api: {
+      pong() {
+        ping.currentTime=0
+        ping.volume=0.1
+        ping.play()
+      },
+    },
+  }))
+  const { pong } = useStore((state) => state.api)
+
   const texture_1 = useLoader(TextureLoader, img);
   const texture_2 = useLoader(TextureLoader, dice6);
   const texture_3 = useLoader(TextureLoader, dice3);
@@ -21,9 +33,9 @@ function DiceThree({name,position,rotation,setCombo,state,setKeep,IsCurrentPlay}
   const texture_5 = useLoader(TextureLoader, dice5);
   const texture_6 = useLoader(TextureLoader, dice2);
   
-  const [ref,api] = useBox(() => ({ name:name,position:position,rotation:rotation,mass: 1}))
-  
-  
+  const [ref,api] = useBox(() => ({ name:name,position:position,rotation:rotation,mass: 1,onCollide:(e)=>pong()}))
+
+
   function handleClick(e) {
     if(IsCurrentPlay){ 
       if (state.keep===false && (state.value===1|| state.value===5)){
