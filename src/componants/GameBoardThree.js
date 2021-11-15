@@ -1,5 +1,5 @@
-import React, { Suspense,useState,useEffect } from 'react'
-import { Canvas } from 'react-three-fiber'
+import React, { Suspense,useState } from 'react'
+import { Canvas } from '@react-three/fiber'
 import { Physics } from '@react-three/cannon'
 import Roll from './Roll';
 import ReTry from './ReTry';
@@ -36,7 +36,7 @@ function GameBoard3D({setIsClicked}){
   const [diceFive,setDiceFive]=useState(initialState)
     return(
       <div className="container">
-        <img onClick={()=>setIsClicked(false)}className="modal-cross"width={30} src={img}/>
+        <img alt="close icon"onClick={()=>setIsClicked(false)}className="modal-cross"width={30} src={img}/>
         <Canvas  style={{width:'90vw'}} linear="true" concurrent sRGB className="gameboard"  camera={{fov:60, position: [0, 0, 10] }}>
             <Suspense fallback={null}>
                 <Physics  gravity={[0, 0, -25]}>

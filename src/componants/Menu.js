@@ -5,7 +5,6 @@ import MenuMarquee from './MenuMarquee'
 function Menu({setIsClicked,isClicked}){
 
     const [width,setWidth]=useState(window.innerWidth)
-    const [transformOrigin,setTransformOrigin]=useState('marquee-scale')
 
     useEffect(() => {//détecte le resizing de la fenêtre
         window.addEventListener('resize',()=>setWidth(window.innerWidth))

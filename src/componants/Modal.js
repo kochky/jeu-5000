@@ -7,7 +7,7 @@ function Modal({setIsClicked}){
         <div className="modal">
             <div className="modal-head">Règles du jeu</div>
             <div className="modal-body">
-                <img onClick={()=>setIsClicked(false)}className="modal-cross"width={30} src={img}/>
+                <img alt='close icon' onClick={()=>setIsClicked(false)}className="modal-cross"width={30} src={img}/>
                 Le but du jeu étant de totaliser le premier 5000 points.<br/>
             
                 Lancer les 5 dés qui doivent sortir As ou 5. <br/>

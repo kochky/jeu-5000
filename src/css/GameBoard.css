@@ -7,6 +7,7 @@
   font-family:'Righteous' ;
   font-size: 20px;
   position:relative;
+  min-height:415px;
 }
 
 .gameboard {
@@ -39,14 +40,16 @@
 
 .player-message {
   position:absolute;
-  top:40vh;
-  right:10vw;
+  top:20px;
+  left:20px;
+  font-size: 30px;
 }
 
 .score-provi-message {
   position:absolute;
-  top:50vh;
-  right:10vw;
+  top:60px;
+  left:20px;
+  font-size: 30px;
 }
 
 .score-total-container {
@@ -85,12 +88,12 @@
 }
 
 .keep-button{
-  top:60vh;
+  top:60%;
   right:60vw;
 }
 
 .roll-button{
-  top:60vh;
+  top:60%;
   left:60vw
 }
 
@@ -102,4 +105,23 @@
   animation:opacity;
   animation-delay: 4s;
   animation-fill-mode:forwards;
+}
+
+@media screen and (max-width:600px), screen and (max-height:600px) {
+
+  .score-total-container div, .launch-message{
+    font-size:30px;
+    min-height:35px;
+  }
+
+  .player-message, .score-provi-message {
+    font-size:10px;
+  }
+
+  .keep-button, .roll-button, .end-button {
+  height:30px;
+  width:100px;
+  font-size:10px;
+  }
+  
 }

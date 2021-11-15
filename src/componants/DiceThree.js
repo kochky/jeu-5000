@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { useLoader } from 'react-three-fiber'
+import { useLoader } from '@react-three/fiber'
 import { useBox } from '@react-three/cannon'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 
@@ -9,6 +8,8 @@ import dice3 from '../images/face3.jpg'
 import dice4 from '../images/face4.jpg'
 import dice5 from '../images/face5.jpg'
 import dice6 from '../images/face6.jpg'
+
+import sound from '../sound/roll.wav'
 
 
 function DiceThree({name,position,rotation,setCombo,state,setKeep,IsCurrentPlay}) {
@@ -45,6 +46,7 @@ function DiceThree({name,position,rotation,setCombo,state,setKeep,IsCurrentPlay}
             case "five":
               api.position.set(-12,-2,-10);
               break; 
+            default:;
           }
 
       }else if(state.confirmed===false && state.keep){
@@ -67,6 +69,8 @@ function DiceThree({name,position,rotation,setCombo,state,setKeep,IsCurrentPlay}
             case "five":
               api.position.set(5,0,-10);
               break; 
+            default:;
+
           }
       }
   }

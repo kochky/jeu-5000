@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react'
-import { Canvas } from 'react-three-fiber'
+import { Canvas } from '@react-three/fiber'
 import { Physics } from '@react-three/cannon'
 
 import Cubes from './CubesThree'
