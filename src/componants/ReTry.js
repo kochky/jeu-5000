@@ -1,9 +1,10 @@
 import React from 'react'
 
 
-function ReTry({whosPlaying,setWhosPlaying,setGameOver,setIsCurrentPlay,setDiceOne,diceOne,setDiceTwo,diceTwo,setDiceThree,diceThree,setDiceFour,diceFour,setDiceFive,diceFive}){
+function ReTry({setTotalDices,whosPlaying,setWhosPlaying,setGameOver,setIsCurrentPlay,setDiceOne,diceOne,setDiceTwo,diceTwo,setDiceThree,diceThree,setDiceFour,diceFour,setDiceFive,diceFive}){
 
     function handleClick(){//Remet le jeu a zero en cas de GameOver
+        setTotalDices(0)
         setGameOver(false)
         setDiceOne({...diceOne,keep:false,confirmed:false})
         setDiceTwo({...diceTwo,keep:false,confirmed:false})
@@ -11,6 +12,7 @@ function ReTry({whosPlaying,setWhosPlaying,setGameOver,setIsCurrentPlay,setDiceO
         setDiceFour({...diceFour,keep:false,confirmed:false})
         setDiceFive({...diceFive,keep:false,confirmed:false})
         setIsCurrentPlay(0)
+        
         if(whosPlaying==='player1'){setWhosPlaying('player2')}
         else if (whosPlaying==='player2'){setWhosPlaying('player1')}
       }

@@ -58,9 +58,11 @@
     right:30px;
     top:20px;
     z-index:1;
-
 }
 
+.modal-cross.yellow {
+    
+}
 @media screen and (max-width:500px),screen and (max-height:500px) {
     .modal-head{
         font-size:36px;

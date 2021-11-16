@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
+function KeepPoints({setAiWantToStop,aiWantToStop,whosPlaying,setFinalPoints,finalPoints,Points,setGameOver,provPoints,diceOne,diceTwo,diceThree,diceFour,diceFive}){//sauvegarde les points quand on arrête le tour volontairement avant le game over
 
-function KeepPoints({whosPlaying,setFinalPoints,finalPoints,Points,setGameOver,provPoints,diceOne,diceTwo,diceThree,diceFour,diceFive}){//sauvegarde les points quand on arrête le tour volontairement avant le game over
+    useEffect(()=>{
+        if(aiWantToStop && whosPlaying==="player2"){
+            handleClick()
+            setAiWantToStop(false)
+        }
+    },[aiWantToStop])
+
 
     function handleClick(){
        
@@ -12,12 +19,11 @@ function KeepPoints({whosPlaying,setFinalPoints,finalPoints,Points,setGameOver,p
         }
         setGameOver(true)
     }
-    if((diceOne.keep && !diceOne.confirmed)|| (diceTwo.keep&& !diceTwo.confirmed)|| (diceThree.keep &&!diceThree.confirmed) ||(diceFour.keep &&!diceFour.confirmed) ||(diceFive.keep && !diceFive.confirmed)){
+    if (whosPlaying==="player1"&&((diceOne.keep && !diceOne.confirmed)|| (diceTwo.keep&& !diceTwo.confirmed)|| (diceThree.keep &&!diceThree.confirmed) ||(diceFour.keep &&!diceFour.confirmed) ||(diceFive.keep && !diceFive.confirmed))){
         return (
             <button className="keep-button" onClick={handleClick}>Garder mes points</button>
         )
     }else {return ("")}
 }
-
 
 export default KeepPoints
