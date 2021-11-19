@@ -94,9 +94,10 @@ function Roll({totalDicesWillBe,setTotalDicesWillBe,aiIsSelecting,setAiIsSelecti
     useEffect(() => {//Automatise le joueur 2
         setTimeout(()=>{
             if(whosPlaying==="player2"){
+                setTotalDicesWillBe(0)
                 setStep(4)
             }
-        },1500)
+        },600)
     }, [whosPlaying])
 
     useEffect(() => {//Ai décide de rejouer ou non
@@ -107,7 +108,7 @@ function Roll({totalDicesWillBe,setTotalDicesWillBe,aiIsSelecting,setAiIsSelecti
             }else {
                 setAiWantToStop(true)
         }}
-    },6000)
+    },1000)
        },[aiIsSelecting])
   
     

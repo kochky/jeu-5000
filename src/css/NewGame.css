@@ -29,8 +29,6 @@
     position:relative;
     height:10vh;
     cursor:pointer;
-
-    /* min-height:112px; */
 }
 
 .marquee-scale {
@@ -66,7 +64,7 @@
 }
 
 .nouvelle-partie:hover {
-    animation:marquee 1.8s linear infinite 400ms;
+    animation:marquee 1.8s linear infinite 400ms ;
 }
 
 .regle-du-jeu:hover {
@@ -146,11 +144,6 @@
         margin:0;
         top:30px;
     }
-
-    /* .marquee, .marquee__inner, .marquee-scale, .marquee p {
-        height:5vh;
-        line-height: 5vh;
-    } */
 
     
 }

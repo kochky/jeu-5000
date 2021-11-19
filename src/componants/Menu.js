@@ -47,17 +47,11 @@ function Menu({setIsClicked,isClicked}){
 
     return (
         <div className="new-game-buttons">
-           
-            <MenuMarquee setIsClicked={setIsClicked} style={divTransform} string={"Nouvelle partie"} classname={"marquee__inner nouvelle-partie"} animation={nouvellePartieAnimation} />            
             {isClicked==="Règles du jeu" && <Modal setIsClicked={setIsClicked} name={isClicked} />}  
-            <MenuMarquee setIsClicked={setIsClicked} style={divTransformRegle} string={"Règles du jeu"} classname={"marquee__inner regle-du-jeu"} animation={regleAnimation} />            
-           
+            {isClicked===false && <MenuMarquee setIsClicked={setIsClicked} style={divTransform} string={"Nouvelle partie"} classname={"marquee__inner nouvelle-partie"} animation={nouvellePartieAnimation} />}        
+            {isClicked===false && <MenuMarquee setIsClicked={setIsClicked} style={divTransformRegle} string={"Règles du jeu"} classname={"marquee__inner regle-du-jeu"} animation={regleAnimation} />} 
         </div>
         )
-        // :(
-        //   <Modal />  
-        // )
-
 }
 
 export default Menu

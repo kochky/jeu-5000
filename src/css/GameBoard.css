@@ -8,6 +8,9 @@
   font-size: 20px;
   position:relative;
   min-height:415px;
+  opacity:0;
+  animation:opacity 00ms forwards 1500ms;
+  z-index:2
 }
 
 .gameboard {
@@ -21,8 +24,8 @@
   right:0;
   left:0;
   text-align: center;
-
 }
+
 
 .end-message {
   opacity:0;
@@ -35,7 +38,6 @@
 }
 
 @keyframes opacity {
-  
   100% {opacity:1}
 }
 
@@ -44,6 +46,8 @@
   top:20px;
   left:20px;
   font-size: 30px;
+  transform:translateY(-150px);
+  animation:score 800ms forwards 1500ms
 }
 
 .score-provi-message {
@@ -51,6 +55,8 @@
   top:60px;
   left:20px;
   font-size: 30px;
+  transform:translateY(-150px);
+  animation:score 800ms forwards 1500ms
 }
 
 .score-total-container {
@@ -61,8 +67,13 @@
   width:100%;
   justify-content: space-around;
   flex-wrap: wrap;
- background-color: #264653;
+  background-color: #264653;
 }
+
+@keyframes score {
+  100% {transform:translateY(0)}
+}
+
 .score-total-container div{
   width:100%;
   text-align: center;
@@ -70,6 +81,8 @@
   line-height: 10vh;
   font-size: 60px;
   color:#e9c46a;
+  opacity:0;
+  animation:opacity 400ms forwards 1800ms;
 }
 
 .keep-button, .roll-button, .end-button {
@@ -95,7 +108,7 @@
 
 .roll-button{
   top:60%;
-  left:60vw
+  left:60vw;
 }
 
 .pick-message {
@@ -114,7 +127,7 @@
 .win {
   position:absolute;
   z-index:999;
-  background-color: #264653;
+  background-color: rgba(	38,70,83,0.9);
   color:#e9c46a;
   font-size: 60px;
   width:100%;
@@ -122,6 +135,148 @@
   display:flex;
   align-items: center;
   justify-content: center;
+  transform-origin: left;
+  transform:scaleX(0);
+  animation:win 400ms forwards
+}
+
+.win div {
+  width:100%;
+  height:10vh;
+  opacity:1;
+  text-align: center;
+  background-color: black;
+  line-height: 10vh;
+  transform:scale(0,0.2);
+  transform-origin: right;
+  animation: winp 300ms forwards 200ms
+  
+}
+.win div p {
+  opacity:0;
+  animation:opacity 100ms forwards 500ms;
+}
+
+@keyframes win{
+  100%{transform:scaleX(1)}
+}
+
+@keyframes winp{
+  80%{transform:scale(1,0.2)}
+  100%{transform:scale(1,1)}
+}
+
+.effect-new-game {
+  background-color: #264653;
+  color:#e9c46a;
+  text-transform: uppercase;
+  font-size:72px;
+  height:10vh;
+  max-height:10vh;
+  line-height: 10vh;
+  font-family:'Righteous' ;
+  position:absolute;
+  text-align: center;
+  width:100%;
+  bottom:50vh;
+  animation:opacity0 00ms forwards 600ms;
+  z-index:1;
+  box-sizing: border-box;
+}
+
+.effect-new-game p {
+  position:absolute;
+  z-index:1;
+  background-color:#264653 ;
+  width:98%;
+  right:1%;
+  min-height:10vh;
+  line-height: 10vh;
+}
+
+.effect-background {
+  transform:scaleY(1);
+  animation: anim-background 600ms forwards ;
+  opacity:1;
+  position:absolute;
+  width:100%;
+  min-height:10vh;
+  background-color: #264653;
+  /* border:10px solid #e9c46a; */
+  box-sizing: border-box;
+  /* transform-origin:center 4.5vh */
+}
+
+.div-blue {
+  position:absolute;
+  background-color:#e9c46a ;
+  width:100%;
+  min-height:20vh;
+  line-height: 20vh;
+  bottom:0;
+  transform:translateY(50vh)
+}
+
+.effect-reversed {
+  color: #264653;
+  background-color:#e9c46a;
+  text-transform: uppercase;
+  font-size:72px;
+  height:10vh;
+  max-height:10vh;
+  line-height: 10vh;
+  font-family:'Righteous' ;
+  position:absolute;
+  text-align: center;
+  width:100%;
+  bottom:50vh;
+  /* opacity:0; */
+
+  animation:opacity0 00ms forwards 1500ms; 
+  z-index:0;
+  box-sizing: border-box;
+}
+
+.effect-reversed p{
+  position:absolute;
+  z-index:1;
+  background-color:#e9c46a ;
+  width:98%;
+  right:1%;
+  min-height:10vh;
+  line-height: 10vh;
+  animation:opacity0 00ms forwards 1000ms; 
+
+}
+.div-yellow {
+  position:absolute;
+  background-color:#264653 ;
+  width:100%;
+  min-height:20vh;
+  line-height: 20vh;
+  bottom:0;
+  transform:translateY(50vh)
+}
+@keyframes opacity0 {
+  
+  100% {opacity:0}
+}
+
+@keyframes anim-background {
+  
+  100% {transform:scaleY(10)}
+}
+
+.translateX {
+  transform:translate(10vw);
+  animation:translateX 1000ms forwards 1500ms;
+}
+
+@keyframes translateX {
+  25%{transform:rotate(-45deg)}
+  50%{transform:rotate(10deg)}
+  100% {transform:rotate(0) translate(0)}
+
 }
 
 @media screen and (max-width:600px), screen and (max-height:600px) {

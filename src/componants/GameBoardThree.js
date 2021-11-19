@@ -1,4 +1,4 @@
-import React, { Suspense,useEffect,useState } from 'react'
+import React, { Suspense,useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { Physics } from '@react-three/cannon'
 import Roll from './Roll';
@@ -32,7 +32,7 @@ function GameBoard3D({setIsClicked}){
   const [totalDices,setTotalDices]=useState(0)//comptabilise le nombre de dés gardés
   const [totalDicesWillBe,setTotalDicesWillBe]=useState(0)//comptabilise le nombre de dés gardés
 
-  const [aiIsSelecting,setAiIsSelecting]=useState(0)
+  const [aiIsSelecting,setAiIsSelecting]=useState(0)//s'assure que tout les valeurs des dés ont été vérifié pour l'AI avant de relancer
   const [rolled,setRolled]=useState(false)//attends la valeur des dés avant de lancer l'animation
 
   const [diceOne,setDiceOne]=useState(initialState)
@@ -43,11 +43,22 @@ function GameBoard3D({setIsClicked}){
 
  
     return(
-      <div className="container">
-        { finalPoints.player1>=5000 && <div className="win">Player1 a gagné ! <img alt="close icon"onClick={()=>setIsClicked(false)}className="modal-cross"width={30} src={imgyellow}/></div>}
-        { finalPoints.player2>=5000 && <div className="win">Player2 a gagné ! <img alt="close icon"onClick={()=>setIsClicked(false)}className="modal-cross"width={30} src={imgyellow}/></div>}
+      <React.Fragment >
+      <div className="effect-new-game">
+        <p>Nouvelle Partie</p>
+        <div className="effect-background"></div>
+        <div className="div-blue"></div>
+      </div>
+      <div className="effect-reversed">
+        <p>Nouvelle Partie</p>
+        <div className="div-yellow"></div>
+      </div>
 
-        <img alt="close icon"onClick={()=>setIsClicked(false)}className="modal-cross"width={30} src={img}/>
+      <div className="container">
+        { finalPoints.player1>=5000 && <div className="win"><div><p>Player1 a gagné !</p></div> <img alt="close icon"onClick={()=>setIsClicked(false)}className="modal-cross"width={30} src={imgyellow}/></div>}
+        { finalPoints.player2>=5000 && <div className="win"><div><p>Player2 a gagné !</p></div> <img alt="close icon"onClick={()=>setIsClicked(false)}className="modal-cross"width={30} src={imgyellow}/></div>}
+
+        <img alt="close icon"onClick={()=>setIsClicked(false)}className="modal-cross translateX"width={30} src={img}/>
         <Canvas style={{height:'80vw'}} linear="true" concurrent sRGB className="gameboard"  camera={{fov:60, position: [0, 0, 10] }}>
             <Suspense fallback={null}>
                 <Physics  gravity={[0, 0, -25]}>
@@ -56,11 +67,11 @@ function GameBoard3D({setIsClicked}){
                     <Plane  position={[16, 0, -10]} rotation={[0, -0.9, 0]} />
                     <Plane  position={[0, 11, -10]} rotation={[0.9, 0, 0]} />
                     <Plane  position={[0, -2, -10]} rotation={[-0.9, 0, 0]} />
-                    {((IsCurrentPlay && rolled) || diceOne.keep)&& <DiceThree setTotalDicesWillBe={setTotalDicesWillBe} setAiIsSelecting={setAiIsSelecting} time="4000" whosPlaying={whosPlaying} setCombo={setCombo} IsCurrentPlay={IsCurrentPlay} state={diceOne} setKeep={setDiceOne} name="one" position={[-7,-5,1]} rotation={valueToRotation(diceOne.value)} />}
-                    {((IsCurrentPlay && rolled) || diceTwo.keep)&&<DiceThree setTotalDicesWillBe={setTotalDicesWillBe} setAiIsSelecting={setAiIsSelecting} time="4500" whosPlaying={whosPlaying} setCombo={setCombo} IsCurrentPlay={IsCurrentPlay} state={diceTwo} setKeep={setDiceTwo} name="two" position={[-3,-5,1]} rotation={valueToRotation(diceTwo.value)} />}
-                    {((IsCurrentPlay && rolled) || diceThree.keep)&&<DiceThree setTotalDicesWillBe={setTotalDicesWillBe} setAiIsSelecting={setAiIsSelecting} time="5000" whosPlaying={whosPlaying} setCombo={setCombo} IsCurrentPlay={IsCurrentPlay} state={diceThree} setKeep={setDiceThree} name="three" position={[0,-5,1]} rotation={valueToRotation(diceThree.value)}/>}
-                    {((IsCurrentPlay && rolled) || diceFour.keep)&&<DiceThree setTotalDicesWillBe={setTotalDicesWillBe} setAiIsSelecting={setAiIsSelecting} time="5500" whosPlaying={whosPlaying} setCombo={setCombo} IsCurrentPlay={IsCurrentPlay} state={diceFour} setKeep={setDiceFour} name="four" position={[3,-5,1]} rotation={valueToRotation(diceFour.value)}/>}
-                    {((IsCurrentPlay && rolled) || diceFive.keep)&&<DiceThree setTotalDicesWillBe={setTotalDicesWillBe} setAiIsSelecting={setAiIsSelecting} time="6000" whosPlaying={whosPlaying} setCombo={setCombo} IsCurrentPlay={IsCurrentPlay} state={diceFive} setKeep={setDiceFive} name="five" position={[7,-5,1]} rotation={valueToRotation(diceFive.value)}/>}                    
+                    {((IsCurrentPlay && rolled) || diceOne.keep) && <DiceThree setTotalDicesWillBe={setTotalDicesWillBe} setAiIsSelecting={setAiIsSelecting} time="4000" whosPlaying={whosPlaying} setCombo={setCombo} IsCurrentPlay={IsCurrentPlay} state={diceOne} setKeep={setDiceOne} name="one" position={[-7,-5,1]} rotation={valueToRotation(diceOne.value)} />}
+                    {((IsCurrentPlay && rolled) || diceTwo.keep) && <DiceThree setTotalDicesWillBe={setTotalDicesWillBe} setAiIsSelecting={setAiIsSelecting} time="4500" whosPlaying={whosPlaying} setCombo={setCombo} IsCurrentPlay={IsCurrentPlay} state={diceTwo} setKeep={setDiceTwo} name="two" position={[-3,-5,1]} rotation={valueToRotation(diceTwo.value)} />}
+                    {((IsCurrentPlay && rolled) || diceThree.keep) && <DiceThree setTotalDicesWillBe={setTotalDicesWillBe} setAiIsSelecting={setAiIsSelecting} time="5000" whosPlaying={whosPlaying} setCombo={setCombo} IsCurrentPlay={IsCurrentPlay} state={diceThree} setKeep={setDiceThree} name="three" position={[0,-5,1]} rotation={valueToRotation(diceThree.value)}/>}
+                    {((IsCurrentPlay && rolled) || diceFour.keep) && <DiceThree setTotalDicesWillBe={setTotalDicesWillBe} setAiIsSelecting={setAiIsSelecting} time="5500" whosPlaying={whosPlaying} setCombo={setCombo} IsCurrentPlay={IsCurrentPlay} state={diceFour} setKeep={setDiceFour} name="four" position={[3,-5,1]} rotation={valueToRotation(diceFour.value)}/>}
+                    {((IsCurrentPlay && rolled) || diceFive.keep) && <DiceThree setTotalDicesWillBe={setTotalDicesWillBe} setAiIsSelecting={setAiIsSelecting} time="6000" whosPlaying={whosPlaying} setCombo={setCombo} IsCurrentPlay={IsCurrentPlay} state={diceFive} setKeep={setDiceFive} name="five" position={[7,-5,1]} rotation={valueToRotation(diceFive.value)}/>}                    
                 </Physics>
             </Suspense>
         </Canvas>
@@ -167,7 +178,8 @@ function GameBoard3D({setIsClicked}){
             </div>
           )}
         </div>
-      </div>)
+      </div>
+      </React.Fragment>)
 
 }
   
