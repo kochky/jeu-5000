@@ -9,8 +9,9 @@
   position:relative;
   min-height:415px;
   opacity:0;
-  animation:opacity 00ms forwards 1500ms;
-  z-index:2
+  animation:opacity 00ms forwards 1450ms;
+  z-index:2;
+  overflow: hidden;
 }
 
 .gameboard {
@@ -202,9 +203,7 @@
   width:100%;
   min-height:10vh;
   background-color: #264653;
-  /* border:10px solid #e9c46a; */
   box-sizing: border-box;
-  /* transform-origin:center 4.5vh */
 }
 
 .div-blue {
@@ -212,27 +211,25 @@
   background-color:#e9c46a ;
   width:100%;
   min-height:20vh;
-  line-height: 20vh;
   bottom:0;
   transform:translateY(50vh)
 }
 
 .effect-reversed {
+  border:10px solid #264653;
   color: #264653;
   background-color:#e9c46a;
   text-transform: uppercase;
   font-size:72px;
-  height:10vh;
-  max-height:10vh;
+  height:100vh;
+  min-height:100vh;
   line-height: 10vh;
   font-family:'Righteous' ;
   position:absolute;
   text-align: center;
   width:100%;
-  bottom:50vh;
-  /* opacity:0; */
-
-  animation:opacity0 00ms forwards 1500ms; 
+  opacity:0;
+  animation:opacitychange 900ms forwards 600ms; 
   z-index:0;
   box-sizing: border-box;
 }
@@ -243,9 +240,10 @@
   background-color:#e9c46a ;
   width:98%;
   right:1%;
+  bottom:50vh;
   min-height:10vh;
   line-height: 10vh;
-  animation:opacity0 00ms forwards 1000ms; 
+  animation:opacity0 00ms forwards 1300ms; 
 
 }
 .div-yellow {
@@ -253,10 +251,15 @@
   background-color:#264653 ;
   width:100%;
   min-height:20vh;
-  line-height: 20vh;
   bottom:0;
-  transform:translateY(50vh)
 }
+
+@keyframes opacitychange {
+  0%{opacity:1}
+  99%{opacity:1}
+  100% {opacity:0}
+}
+
 @keyframes opacity0 {
   
   100% {opacity:0}
