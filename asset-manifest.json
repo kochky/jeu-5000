@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/jeu-5000/static/css/main.2ce61853.chunk.css",
+    "main.js": "/jeu-5000/static/js/main.58ca478a.chunk.js",
+    "main.js.map": "/jeu-5000/static/js/main.58ca478a.chunk.js.map",
+    "runtime-main.js": "/jeu-5000/static/js/runtime-main.963c320b.js",
+    "runtime-main.js.map": "/jeu-5000/static/js/runtime-main.963c320b.js.map",
+    "static/js/2.11e75e1a.chunk.js": "/jeu-5000/static/js/2.11e75e1a.chunk.js",
+    "static/js/2.11e75e1a.chunk.js.map": "/jeu-5000/static/js/2.11e75e1a.chunk.js.map",
+    "index.html": "/jeu-5000/index.html",
+    "static/css/main.2ce61853.chunk.css.map": "/jeu-5000/static/css/main.2ce61853.chunk.css.map",
+    "static/js/2.11e75e1a.chunk.js.LICENSE.txt": "/jeu-5000/static/js/2.11e75e1a.chunk.js.LICENSE.txt",
+    "static/media/cross.85d6b1de.svg": "/jeu-5000/static/media/cross.85d6b1de.svg",
+    "static/media/crossyellow.371359b6.svg": "/jeu-5000/static/media/crossyellow.371359b6.svg",
+    "static/media/face1.866efb72.png": "/jeu-5000/static/media/face1.866efb72.png",
+    "static/media/face2.f3638071.jpg": "/jeu-5000/static/media/face2.f3638071.jpg",
+    "static/media/face3.1e003169.jpg": "/jeu-5000/static/media/face3.1e003169.jpg",
+    "static/media/face4.1bdf06ab.jpg": "/jeu-5000/static/media/face4.1bdf06ab.jpg",
+    "static/media/face5.4dc9d460.jpg": "/jeu-5000/static/media/face5.4dc9d460.jpg",
+    "static/media/face6.e8a6ca3a.jpg": "/jeu-5000/static/media/face6.e8a6ca3a.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.963c320b.js",
+    "static/js/2.11e75e1a.chunk.js",
+    "static/css/main.2ce61853.chunk.css",
+    "static/js/main.58ca478a.chunk.js"
+  ]
+}
